@@ -7,6 +7,8 @@ constants['WORKER_SMALL_MAX'] = 6;
 var creep_bodies = {};
 creep_bodies['WORKER_SMALL'] = [WORK,CARRY,MOVE];
 
+
+//TODO: maybe move states and tasks to role_worker?
 //creep states
 var states = {          //state_data:
     IDLE: 0,             //null
@@ -18,7 +20,7 @@ var states = {          //state_data:
 };
 
 var tasks = {
-    NONE: 0,
+    IDLE: 0,
     CHARGE_SPAWN: 1,
     UPGRADE_CONTROLLER: 2
 };

@@ -1,0 +1,13 @@
+{
+  "ecmaVersion": 8,
+  "libs": [],
+  "loadEagerly": [
+    "ScreepsAutocomplete-master/**/*.js"
+  ],
+  "dontLoad": [
+    "node_modules/**"
+  ],
+  "plugins": {
+    "doc_comment": true
+  }
+}

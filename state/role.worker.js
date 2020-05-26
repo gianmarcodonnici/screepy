@@ -3,7 +3,7 @@ var config = require('config');
 
 function set_state(creep, state, target) {
     creep.memory.state = state;
-    creep.memory.state_data = target.id;
+    creep.memory.state_data = target;
 }
 
 function set_task(creep, task, task_data) {
@@ -110,11 +110,7 @@ function task_upgrade_controller(creep) {
             if (creep.store[RESOURCE_ENERGY] > 0) {
                 //creep still has energy, transfer it to the spawns
                 var controller = Game.getObjectById(creep.memory.task_data);
-                var result = creep.upgradeController(controller);
-                //go idle if spawn is full
-                if (result == ERR_FULL) {
-                    set_idle(creep);
-                }
+                creep.upgradeController(controller);
             }
             break;
     }

@@ -7,7 +7,7 @@ function set_state(creep, state, target) {
 }
 
 function set_task(creep, task, task_data) {
-    creep.memory.task = task
+    creep.memory.task = task;
     creep.memory.task_data = task_data;
     creep.memory.state = config.states.IDLE;
     creep.memory.state_data = null;

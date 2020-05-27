@@ -15,8 +15,14 @@ function run_manager() {
             && core.spawning == null
             && core.store[RESOURCE_ENERGY] >= 300) { //TODO: modify this to calc creep cost
         var name = "worker_" + Game.time;
-        core.spawnCreep(config.creep_bodies['WORKER_SMALL'], name,
-            {memory: {role: 'worker', task: config.tasks.IDLE}});
+        var memory = {
+            role: 'worker',
+            task: config.tasks.IDLE,
+            task_data: null,
+            state: config.state.IDLE,
+            state_data: null
+        }
+        core.spawnCreep(config.creep_bodies['WORKER_SMALL'], name, memory);
     }
 
     //Get idle workers and assign a task

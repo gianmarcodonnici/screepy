@@ -1,7 +1,6 @@
+
 module.exports.loop = function () {
-
     var manager = require('manager');
-
     manager.run_manager();
 
     //Clean Memory

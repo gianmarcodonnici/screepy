@@ -1,5 +1,4 @@
 
-console.log("b");
 //Constants
 var constants = {};
 constants['WORKER_SMALL_MAX'] = 6;

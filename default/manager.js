@@ -21,7 +21,7 @@ function run_manager() {
             task_data: null,
             state: config.state.IDLE,
             state_data: null
-        }
+        };
         core.spawnCreep(config.creep_bodies['WORKER_SMALL'], name, memory);
     }
 

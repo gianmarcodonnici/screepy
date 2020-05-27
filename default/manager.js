@@ -10,8 +10,8 @@ function run_manager() {
     //Spawn new worker if required and possible
 
     //TODO: Handle multiple spawns
-    if (creep_list['worker'] != undefined
-            && creep_list['worker'].length < config.constants.WORKER_SMALL_MAX
+    if (creep_list['worker'] === undefined) creep_list['worker'] = {}
+    if (creep_list['worker'].length < config.constants.WORKER_SMALL_MAX
             && core.spawning == null
             && core.store[RESOURCE_ENERGY] >= 300) { //TODO: modify this to calc creep cost
         var name = "worker_" + Game.time;

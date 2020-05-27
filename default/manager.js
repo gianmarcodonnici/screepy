@@ -8,10 +8,10 @@ function run_manager() {
     //create list of creeps sorted by role
     var creep_list = _.groupBy(Game.creeps, (creep) => { return creep.memory.role; });
     //Spawn new worker if required and possible
-    //TODO: ugly hack
-    creep_list['worker'] = [];
+
     //TODO: Handle multiple spawns
-    if (creep_list['worker'].length < config.constants.WORKER_SMALL_MAX
+    if (creep_list['worker'] != undefined
+            && creep_list['worker'].length < config.constants.WORKER_SMALL_MAX
             && core.spawning == null
             && core.store[RESOURCE_ENERGY] >= 300) { //TODO: modify this to calc creep cost
         var name = "worker_" + Game.time;

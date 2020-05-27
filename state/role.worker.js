@@ -19,7 +19,7 @@ function set_idle(creep) {
 
 function get_source(creep) {
     //TODO: handle multiple sources
-    return creep.room.find(FIND_SOURCES_ACTIVE)[0]
+    return creep.room.find(FIND_SOURCES_ACTIVE)[0];
 }
 
 //AI functions

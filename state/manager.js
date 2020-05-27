@@ -10,7 +10,7 @@ function run_manager() {
     //Spawn new worker if required and possible
     //TODO: Handle multiple spawns
     if (creep_list['worker'].length < config.constants.WORKER_SMALL_MAX
-            && core.spawning = null
+            && core.spawning == null
             && core.store[RESOURCE_ENERGY] >= 300) { //TODO: modify this to calc creep cost
         var name = "worker_" + Game.time;
         core.spawnCreep(config.creep_bodies['WORKER_SMALL'], name,
@@ -46,16 +46,3 @@ function run_manager() {
 module.exports = {
     run_manager
 };
-
-//
-// What you're trying to do is highly inefficient: You iterate over the Game.creeps collection multiple times (I counted 8 times at least). If you wish to count creeps in roles I suggest you use
-//
-// var groups = _.groupBy(Game.creeps, (c) => { return c.memory.role; });
-//
-// This will return an object with each role as a key with behind the key a collection of all creeps in that specific role:
-//
-// {
-//     harvester: [Creep, Creep, Creep],
-//     builder: [Creep],
-//     upgrader: [Creep, Creep, Creep]
-// }

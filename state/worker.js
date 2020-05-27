@@ -7,7 +7,7 @@ function set_state(creep, state, target) {
 }
 
 function set_task(creep, task, task_data) {
-    creep.memory.task = task
+    creep.memory.task = task;
     creep.memory.task_data = task_data;
     creep.memory.state = config.states.IDLE;
     creep.memory.state_data = null;
@@ -19,7 +19,7 @@ function set_idle(creep) {
 
 function get_source(creep) {
     //TODO: handle multiple sources
-    return creep.room.find(FIND_SOURCES_ACTIVE)[0]
+    return creep.room.find(FIND_SOURCES_ACTIVE)[0];
 }
 
 //AI functions
@@ -117,22 +117,20 @@ function task_upgrade_controller(creep) {
 }
 
 
-var role_worker = {
 
-    /** @param {Creep} creep **/
-    run_worker: function(creep) {
-        switch (creep.memory.task) {
-            case config.tasks.IDLE:
-                task_idle(creep);
-                break;
-            case config.tasks.CHARGE_SPAWN:
-                task_charge_spawn(creep);
-                break;
-            case config.tasks.UPGRADE_CONTROLLER:
-                task_upgrade_controller(creep);
-                break;
-        }
+function run_worker(creep) {
+    switch (creep.memory.task) {
+        case config.tasks.IDLE:
+            task_idle(creep);
+            break;
+        case config.tasks.CHARGE_SPAWN:
+            task_charge_spawn(creep);
+            break;
+        case config.tasks.UPGRADE_CONTROLLER:
+            task_upgrade_controller(creep);
+            break;
     }
-};
+}
 
-module.exports = {role_worker, set_task}
+
+module.exports = {run_worker, set_task};

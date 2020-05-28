@@ -114,6 +114,9 @@ function task_upgrade_controller(creep) {
                 var controller = Game.getObjectById(creep.memory.task_data);
                 creep.upgradeController(controller);
             }
+            else {
+                set_idle(creep);
+            }
             break;
     }
 }

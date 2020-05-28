@@ -68,6 +68,8 @@ function task_charge_spawn(creep) {
                 if (result == ERR_FULL) {
                     set_idle(creep);
                 }
+            } else {
+                set_idle(creep);
             }
             break;
     }
@@ -108,7 +110,7 @@ function task_upgrade_controller(creep) {
             break;
         case config.states.UPGRADE:
             if (creep.store[RESOURCE_ENERGY] > 0) {
-                //creep still has energy, transfer it to the spawns
+                //creep still has energy, upgrade controller
                 var controller = Game.getObjectById(creep.memory.task_data);
                 creep.upgradeController(controller);
             }

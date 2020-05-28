@@ -14,7 +14,7 @@ function set_task(creep, task, task_data) {
 }
 
 function set_idle(creep) {
-    creep.set_task(creep, config.tasks.IDLE, null);
+    set_task(creep, config.tasks.IDLE, null);
 }
 
 function get_source(creep) {

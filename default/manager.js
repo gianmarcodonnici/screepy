@@ -46,9 +46,7 @@ function run_manager() {
     }
 
     //And finally, run creeps
-    for(var creep in creep_list['worker']) {
-        role_worker.run_worker(creep);
-    }
+    creep_list['worker'].forEach((worker) => { role_worker.run_worker(worker); });
 }
 
 module.exports = {

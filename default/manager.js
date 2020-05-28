@@ -10,19 +10,19 @@ function run_manager() {
     //Spawn new worker if required and possible
 
     //TODO: Handle multiple spawns
-    if (creep_list['worker'] === undefined) creep_list['worker'] = {}
+    //TODO: ugly hack, handle undefined role arrays better
+    if (creep_list['worker'] === undefined) creep_list['worker'] = [];
     if (creep_list['worker'].length < config.constants.WORKER_SMALL_MAX
             && core.spawning == null
             && core.store[RESOURCE_ENERGY] >= 300) { //TODO: modify this to calc creep cost
         var name = "worker_" + Game.time;
-        var memory = {
-            role: 'worker',
-            task: config.tasks.IDLE,
-            task_data: null,
-            state: config.state.IDLE,
-            state_data: null
-        };
-        core.spawnCreep(config.creep_bodies['WORKER_SMALL'], name, memory);
+        core.spawnCreep(config.creep_bodies['WORKER_SMALL'], name);
+        //Set memory
+        Game.creeps[name].memory.role = 'worker';
+        Game.creeps[name].memory.task = config.tasks.IDLE;
+        Game.creeps[name].memory.task_data = null;
+        Game.creeps[name].memory.state = config.states.IDLE;
+        Game.creeps[name].memory.state_data = null;
     }
 
     //Get idle workers and assign a task

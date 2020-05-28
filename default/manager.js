@@ -26,8 +26,8 @@ function run_manager() {
     }
 
     //Get idle workers and assign a task
-    var idle_workers = _.filter( creep_list['worker'],
-        (worker) => worker.memory.task == config.tasks.IDLE);
+    var idle_workers = _.filter(creep_list['worker'], (creep) => creep.memory.task == config.tasks.IDLE);
+
 
     if (idle_workers.length > 0) {
         //TODO: split up workers between tasks with estimates of work to do

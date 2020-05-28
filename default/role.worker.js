@@ -116,23 +116,18 @@ function task_upgrade_controller(creep) {
     }
 }
 
+function run_worker(worker) {
+    switch (worker.memory.task) {
+      case config.tasks.IDLE:
+          task_idle(worker);
+          break;
+      case config.tasks.CHARGE_SPAWN:
+          task_charge_spawn(worker);
+          break;
+      case config.tasks.UPGRADE_CONTROLLER:
+          task_upgrade_controller(worker);
+          break;
+  }  
+}
 
-var role_worker = {
-
-    /** @param {Creep} creep **/
-    run_worker: function(creep) {
-        switch (creep.memory.task) {
-            case config.tasks.IDLE:
-                task_idle(creep);
-                break;
-            case config.tasks.CHARGE_SPAWN:
-                task_charge_spawn(creep);
-                break;
-            case config.tasks.UPGRADE_CONTROLLER:
-                task_upgrade_controller(creep);
-                break;
-        }
-    }
-};
-
-module.exports = {role_worker, set_task}
+module.exports = {run_worker, set_task}

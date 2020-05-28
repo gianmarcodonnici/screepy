@@ -33,22 +33,22 @@ function run_manager() {
         //TODO: split up workers between tasks with estimates of work to do
         //skip all this if workers are all busy
         if (core.store[RESOURCE_ENERGY] < 300) {
-            for ( var worker in idle_workers ) {
+            idle_workers.forEach((worker) => {
                 role_worker.set_task(worker, config.tasks.CHARGE_SPAWN, core.id);
-            }
+            });
         }
         else {
             //upgrade controller if spawn is charged
-            for ( var worker in idle_workers ) {
+            idle_workers.forEach((worker) => {
                 role_worker.set_task(worker, config.tasks.UPGRADE_CONTROLLER, room.controller.id);
-            }
+            });
         }
     }
 
     //And finally, run creeps
-    for (var worker in creep_list['worker'] ) {
-        role_worker.run_worker(worker);
-    }
+    creep_list.forEach((creep) => {
+        role_worker.run_worker(creep);
+    });
 }
 
 module.exports = {
